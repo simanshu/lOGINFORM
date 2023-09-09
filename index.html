@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>login system</title>
+    <!-- Insert style.css file inside index.html -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="frm">
+        <h1>Login</h1>
+        <form name="f1" action="authentication.php" onsubmit="return validation()" method="POST">
+            <p>
+                <label> UserName: </label>
+                <input type="text" id="user" name="user" />
+            </p>
+            <p>
+                <label> Password: </label>
+                <input type="password" id="pass" name="pass" />
+            </p>
+            <p>
+                <input type="submit" id="btn" value="Login" />
+            </p>
+        </form>
+    </div>
+    <!-- Validation for empty field -->
+    <script>
+        function validation() {
+
+            var id = document.f1.user.value;
+            var ps = document.f1.pass.value;
+
+    // Regular expression patterns for validation
+            var usernamePattern = /^[A-Za-z0-9_@]+$/; // Allows letters, numbers, underscore, and @
+            var passwordPattern = /^(?=.*[A-Z])(?=.*\d).+$/; // Requires at least one capital letter and one number
+
+            if (id.length == "") {
+                alert("User Name is empty");
+                return false;
+            } else if (!usernamePattern.test(id)) {
+                alert("Invalid User Name format. Please use only letters, numbers, @_");
+                return false;
+            }
+
+            if (ps.length == "") {
+                alert("Password field is empty");
+                return false;
+            } else if (!passwordPattern.test(ps)) {
+                alert("Invalid Password format. It must contain at least one capital letter and one number.");
+                return false;
+            }
+
+
+            return true; // Form is valid
+    }
+
+    </script>
+</body>
+</html>
